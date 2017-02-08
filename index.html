@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <script src="//cdn.bootcss.com/vue/2.1.10/vue.js"></script>
+        <script src="//cdn.bootcss.com/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
+        <style>
+        body,html{
+            padding:0px;
+            margin:0px;
+            width:100%;
+            height:100%;
+        }
+        .images{
+        }
+        .loading{
+            height:100%;
+            width:100%;
+            text-align: center;
+            font-size: 60px;
+        }
+        </style>
+    </head>
+    <body>
+       <div id="app">
+            <div class="loading" v-if="!imageLoaded">
+                 <h3>loading({{imageLoadInfo.current +'/' + imageLoadInfo.count }}) ....</h3>
+        </div>
+        <div class="images" v-show="imageLoaded" style="display: none;">
+            <img src="http://lorempixel.com/500/500/cats/?a=1" alt=""/>
+            <img src="http://lorempixel.com/500/500/cats/?a=2" alt=""/>
+            <img src="http://lorempixel.com/500/500/cats/?a=3" alt=""/>
+            <img src="http://lorempixel.com/500/500/cats/?a=4" alt=""/>
+        </div>
+       </div>
+        <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                imageLoaded:false,
+                imageLoadInfo:{
+                    current:0,
+                    count:4
+                },
+                message: 'Hello Vue!'
+            },
+            methods:{
+                init:function(){
+                    console.log(this.imageLoaded);
+                    imagesLoaded( document.querySelector(".images"), function(){
+                        console.log("image loaded");
+                        this.imageLoaded = true;
+                        console.log(this.imageLoaded);
+                        
+                    }.bind(this)
+                    ).on( 'progress', function( instance, image ) {
+                        var result = image.isLoaded ? 'loaded' : 'broken';
+                        this.imageLoadInfo.current+=1;
+                        console.log( 'image is ' + result + ' for ' + image.img.src );
+                    }.bind(this));
+                }
+            }
+        });
+       app.init();
+        </script>
+    </body>
+</html>
