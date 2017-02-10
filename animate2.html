@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
+    />
+    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/velocity/1.4.1/velocity.min.js"></script>
+    <script src="//cdn.bootcss.com/velocity/1.4.1/velocity.ui.min.js"></script>
+    <style>
+        .page {
+            position: absolute;
+            opacity: 0;
+            display: none;
+            background: #f1f1f1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page" id="p1">
+        11111
+    </div>
+    <div class="page" id="p2">
+        222
+    </div>
+    <div class="page" id="p3">
+        333
+    </div>
+    <script>
+        var $element1 = $("#p1").eq(0),
+            $element2 = $("#p2").eq(0),
+            $element3 = $("#p3").eq(0);
+
+        var mySequence = [
+            {
+                e: $element1,
+                p: { opacity: 1 },
+                o: {
+                    duration: 1000,
+                    begin: function (el) {
+                        $(el).show();
+                    },
+                    complete: function (el) {
+                        $(el).hide();
+                    }
+                }
+            },
+             {
+                e: $element2,
+                p: { opacity: 1 },
+                o: {
+                    duration: 1000,
+                    begin: function (el) {
+                        $(el).show();
+                    },
+                    complete: function (el) {
+                        $(el).hide();
+                    }
+                }
+            },
+             {
+                e: $element3,
+                p: { opacity: 1 },
+                o: {
+                    duration: 1000,
+                    begin: function (el) {
+                        $(el).show();
+                    },
+                    complete: function (el) {
+                        $(el).hide();
+                    }
+                }
+            }
+        ];
+
+        $.Velocity.RunSequence(mySequence);
+    </script>
+
+</body>
+
+</html>

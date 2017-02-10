@@ -1,0 +1,74 @@
+<html>
+
+<head>
+ <script src="//cdn.bootcss.com/vue/2.1.10/vue.js"></script>
+
+<style>
+html,body{
+    padding:0;
+    margin:0;
+}
+.fade-leave,
+.fade-leave-active {
+    transition: margin-top 2.5s
+}
+.fade-enter,
+.fade-enter-active {
+     transition: margin-top 2.5s
+}
+
+
+.fade-enter{
+    margin-top:0px;
+}
+
+.fade-enter-active{
+    margin-top:-10px;
+}
+
+.fade-leave{
+    margin-top:-20px;
+}
+.fade-leave-active{
+    margin-top:-30px;
+}
+
+.text-fade-enter-active {
+  transition: all .3s ease;
+}
+.text-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.text-fade-enter, .slide-fade-leave-active {
+  transform: translateY(10px);
+  opacity: 0;
+}
+.text-fade-leave-active {
+  transform: translateY(-10px);
+  }
+</style>
+</head>
+<body>
+
+<div id="demo" >
+  <button v-on:click="show = !show">
+    Toggle
+  </button>
+  <transition name="slide-fade">
+    <p v-if="show"  >hello</p>
+  </transition>
+</div>
+<script>
+
+new Vue({
+  el: '#demo',
+  data: {
+    show: true
+  }
+  
+})
+</script>
+
+</body>
+
+</html>

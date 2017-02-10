@@ -1,0 +1,47 @@
+#p1 {
+    background: url('/asset/img/p1/bg.png') no-repeat;
+    background-size: cover;
+    .screen-light {
+        background: url('/asset/img/p1/light.png') no-repeat;
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        left: 0;  
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        animation: light 5s infinite;
+    }
+    @keyframes light {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    .star1 {
+        top: 14%;
+        left: 15%;
+        animation-delay: 1s;
+    }
+    .star2 {
+        top: 5%;
+        left: 39%;
+    }
+    .text2,
+    .text3 {
+        animation: text-in .4s ease-out;
+        animation-iteration-count: 1;
+    }
+    .text2 {
+        right: 18%;
+        width: 0.8rem;
+    }
+    .text3 {
+        bottom: 14%;
+    }
+}

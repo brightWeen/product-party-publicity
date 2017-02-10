@@ -1,65 +1,52 @@
-<html>
-    <head>
-        <script src="//cdn.bootcss.com/vue/2.1.10/vue.js"></script>
-        <script src="//cdn.bootcss.com/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
-        <style>
-        body,html{
-            padding:0px;
-            margin:0px;
-            width:100%;
-            height:100%;
-        }
-        .images{
-        }
-        .loading{
-            height:100%;
-            width:100%;
-            text-align: center;
-            font-size: 60px;
-        }
-        </style>
-    </head>
-    <body>
-       <div id="app">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
+    />
+
+    <script src="//cdn.bootcss.com/vue/2.1.10/vue.js"></script>
+    <script src="//cdn.bootcss.com/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
+    <link rel="stylesheet" href="asset/css/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <transition name="fade">
             <div class="loading" v-if="!imageLoaded">
-                 <h3>loading({{imageLoadInfo.current +'/' + imageLoadInfo.count }}) ....</h3>
+                <div class="loading-icon">
+                    <img src="https://www.lgstatic.com/activity-rsrc/dist/lagouNight/img/loading.gif?v=ab92c408daeeb3bba22da9fb33fbace2f7427fbb"
+                        alt="">
+                </div>
+            </div>
+        </transition>
+        <transition name="fade">
+            <div class="page" id="p1" v-if="page1.loaded">
+                <div class="enter-btn2 breath infinite" v-on:click="nextPage()">
+                    <div></div>
+                </div>
+                <p class="text text1 btn-text text4 transition4 show">点击开启探索</p>
+                <transition name="text-fade">
+                    <p v-if="!page1.text.text1" class="text text2 bottom"><b>在</b>浩瀚宇宙的角落，</p>
+                </transition>
+                <transition name="text-fade">
+                    <p v-if="!page1.text.text1" class="text text3 bottom">我从未停止过对星空的眺望</p>
+                </transition>
+            </div>
+        </transition>
+        <transition name="fade">
+            <div class="page" id="p2" v-if="page2.loaded">
+                2
+            </div>
+        </transition>
+        <div class="page" id="p3" v-if="page3.loaded">
+            3
         </div>
-        <div class="images" v-show="imageLoaded" style="display: none;">
-            <img src="http://lorempixel.com/500/500/cats/?a=1" alt=""/>
-            <img src="http://lorempixel.com/500/500/cats/?a=2" alt=""/>
-            <img src="http://lorempixel.com/500/500/cats/?a=3" alt=""/>
-            <img src="http://lorempixel.com/500/500/cats/?a=4" alt=""/>
+        <div class="page" id="p4" v-if="page4.loaded">
+            4
         </div>
-       </div>
-        <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                imageLoaded:false,
-                imageLoadInfo:{
-                    current:0,
-                    count:4
-                },
-                message: 'Hello Vue!'
-            },
-            methods:{
-                init:function(){
-                    console.log(this.imageLoaded);
-                    imagesLoaded( document.querySelector(".images"), function(){
-                        console.log("image loaded");
-                        this.imageLoaded = true;
-                        console.log(this.imageLoaded);
-                        
-                    }.bind(this)
-                    ).on( 'progress', function( instance, image ) {
-                        var result = image.isLoaded ? 'loaded' : 'broken';
-                        this.imageLoadInfo.current+=1;
-                        console.log( 'image is ' + result + ' for ' + image.img.src );
-                    }.bind(this));
-                }
-            }
-        });
-       app.init();
-        </script>
-    </body>
+    </div>
+    <script src="asset/js/index.js"></script>
+</body>
+
 </html>
