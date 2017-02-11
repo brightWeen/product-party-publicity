@@ -1,0 +1,104 @@
+#p2 {
+    .bg-animation {
+        transition: all 0s linear;//速度在js中设置
+        width: 100%;
+        height: 100%;
+        &.next {
+            transform: translateY(100%);
+        }
+    }
+    .bg-wrapper {
+        background: #000717;
+        //transition: all 3s linear;
+        //transform: translateY(-1rem) ;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        &.bg2 {
+            top: -100%;
+        }
+    }
+    .astronaut {
+        position: absolute;
+        width: unit(450/75, rem);
+        height: unit(630/75, rem);
+        top: 100%;
+        left: 20%;
+        z-index: 100;
+        transition: all 3s linear;
+        &.show {
+            top: 34%;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .ball {
+        position: absolute;
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 50;
+        &.ball1 {
+            background-image: url('/asset/img/p2/ball1.png');
+            width: unit(652/75, rem);
+            height: unit(652/75, rem);
+            bottom: unit(652/75/2.5*-1, rem);
+            left: unit((652/75)/2.5*-1, rem);
+        }
+        &.ball2 {
+            background-image: url('/asset/img/p2/ball2.png');
+            width: unit(368/75, rem);
+            height: unit(375/75, rem);
+            top: 46%;
+            left: -16%;
+            animation: rotate 8s infinite linear;
+        }
+        &.ball3 {
+            background-image: url('/asset/img/p2/ball3.png');
+            width: unit(164/75, rem);
+            height: unit(164/75, rem);
+            top: 3%;
+            left: 10%;
+            animation: rotate 5s infinite linear;
+        }
+        &.ball4 {
+            background-image: url('/asset/img/p2/ball4.png');
+            width: unit(112/75, rem);
+            height: unit(122/75, rem);
+            top: 40%;
+            left: 60%;
+        }
+    }
+    .text1 {
+        right: 8%;
+        p:first-of-type {
+            margin-top: -1rem;
+            margin-right: 0.1rem;
+        }
+        p:last-of-type {
+            text-align: right;
+            width: 0.7rem;
+        }
+    }
+    .text2{
+         p:first-of-type {
+             margin-top: -1.5rem;
+         }
+    }
+     .text3{
+         left:6%;
+         p:first-of-type {
+             margin-top: -1rem;
+         }
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg)
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
