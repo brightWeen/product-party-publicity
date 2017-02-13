@@ -26,23 +26,25 @@
         margin-left: 30px;
         animation: zoom 1.5s infinite linear;
     }
-    .text-wrap{
-     position: absolute;
-    width: 3rem;
-    top: 168px;
-    margin-left: -0.5rem;
+    .text-wrap {
+        position: absolute;
+        width: 4rem;
+        top: 168px;
+        margin-left: -0.6rem;
+        text-align: center;
     }
     .text1 {
-        width:100%;
+        width: 100%;
         text-align: left;
-        &.progress{
-            color: #7bc2ff;
+        font-size: 0.6rem;
+        &.progress {
+            color: #33ccff;
             width: 0%;
             overflow: hidden;
             white-space: nowrap;
+            transition: width 1s ease;
         }
     }
-    
 }
 
 @keyframes zoom {
@@ -62,7 +64,6 @@
         transform: scale(0.5);
     }
 }
-
 
 @keyframes up-down {
     0% {

@@ -2,51 +2,169 @@
 <html lang="en">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
-    />
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" href="asset/css/index2.css">
+    <link rel="stylesheet" href="asset/css/p0.css">
+    <link rel="stylesheet" href="asset/css/p1.css">
+    <link rel="stylesheet" href="asset/css/p2.css">
+    <link rel="stylesheet" href="asset/css/p3.css">
+    <link rel="stylesheet" href="asset/css/p4.css">
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible.js"></script>
+    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/velocity/1.4.1/velocity.min.js"></script>
+    <script src="//cdn.bootcss.com/velocity/1.4.1/velocity.ui.min.js"></script>
 
-    <script src="//cdn.bootcss.com/vue/2.1.10/vue.js"></script>
-    <script src="//cdn.bootcss.com/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
-    <link rel="stylesheet" href="asset/css/index.css">
 </head>
 
 <body>
-    <div id="app">
-        <transition name="fade">
-            <div class="loading" v-if="!imageLoaded">
-                <div class="loading-icon">
-                    <img src="https://www.lgstatic.com/activity-rsrc/dist/lagouNight/img/loading.gif?v=ab92c408daeeb3bba22da9fb33fbace2f7427fbb"
-                        alt="">
-                </div>
+    <div class="page" id="p0">
+        <div class="loading-bg">
+            <div class="loading-item">
             </div>
-        </transition>
-        <transition name="fade">
-            <div class="page" id="p1" v-if="page1.loaded">
-                <div class="enter-btn2 breath infinite" v-on:click="nextPage()">
-                    <div></div>
-                </div>
-                <p class="text text1 btn-text text4 transition4 show">点击开启探索</p>
-                <transition name="text-fade">
-                    <p v-if="!page1.text.text1" class="text text2 bottom"><b>在</b>浩瀚宇宙的角落，</p>
-                </transition>
-                <transition name="text-fade">
-                    <p v-if="!page1.text.text1" class="text text3 bottom">我从未停止过对星空的眺望</p>
-                </transition>
+            <div class="loading-bottom"></div>
+            <div class="text-wrap">
+                <p class="text text1">探索准备中...</p>
+                <p id="loadingProgress" class="text text1 progress">探索准备中...</p>
             </div>
-        </transition>
-        <transition name="fade">
-            <div class="page" id="p2" v-if="page2.loaded">
-                2
-            </div>
-        </transition>
-        <div class="page" id="p3" v-if="page3.loaded">
-            3
-        </div>
-        <div class="page" id="p4" v-if="page4.loaded">
-            4
+
         </div>
     </div>
-    <script src="asset/js/index.js"></script>
+    <div class="page page1" id="p1">
+        <div class="screen-light"> </div>
+        <div class="star star1"></div>
+        <div class="star star2 gray"></div>
+        <div class="text-group b-r text1">
+            <p class="text "><b>在</b>浩瀚宇宙的角落<br>，</p>
+            <p class="text ">我从未停止过对星空的眺望</p>
+        </div>
+        <div class="enter-btn2 breath  show" id="p1-btn">
+            <div></div>
+        </div>
+        <p class="text text2" id="p1-btn-text">点击进行探索</p>
+    </div>
+    <div class="page" id="p2">
+        <div class="astronaut">
+            <img src="/asset/img/p2/astronaut.gif" alt="">
+        </div>
+        <div class="bg-animation">
+            <div class="bg-wrapper bg2">
+                <div class="ball ball2 "></div>
+                <div class="ball ball3 "></div>
+                <div class="ball ball4"></div>
+                <div class="star-cross" style="left:23.99%;top:38.62%"></div>
+                <div class="star-cross" style="left:42.15%;top:42.26%"></div>
+                <div class="star-cross" style="left:47.99%;top:55.01%"></div>
+                <div class="star-cross" style="left:71.34%;top:69.22%"></div>
+                <div class="star red" style="left:38.91%;top:19.67%"></div>
+                <div class="star red" style="left:3.24%;top:48.71%"></div>
+                <div class="star red" style="left:67.96%;top:37.78%"></div>
+                <div class="star yellow" style="left:58.56%;top:37.67%"></div>
+                <div class="star gray" style="left:90.79%;top:25.50%"></div>
+                <div class="star" style="left:63.36%;top:60.00%"></div>
+                <div class="star" style="left:91.50%;top:64.59%"></div>
+                <div class="star" style="left:82.81%;top:71.18%"></div>
+                <div class="star" style="left:67.25%;top:64.77%"></div>
+                <div class="star-x" style="left:77.11%;top:30.71%"></div>
+                <div class="star-x" style="left:79.38%;top:35.59%"></div>
+                <div class="star-x" style="left:89.23%;top:47.43%"></div>
+                <div class="star" style="left:50.50%;top:88.59%"></div>
+                <div class="star-x" style="left:10.23%;top:95.43%"></div>
+                <div class="star gray" style="left:80.50%;top:94.59%"></div>
+
+            </div>
+            <div class="bg-wrapper">
+                <div class="ball ball1"></div>
+                <div class="star red" style="left:9.08%;top:5.83%"></div>
+                <div class="star-ball" style="left:20.82%;top:7.29%"></div>
+                <div class="star" style="left:63.62%;top:5.54%"></div>
+                <div class="star-cross" style="left:84.31%;top:8.74%"></div>
+                <div class="star-x" style="left:49.94%;top:10.93%"></div>
+                <div class="star yellow" style="left:29.18%;top:13.11%"></div>
+                <div class="star-cross" style="left:16.02%;top:16.83%"></div>
+                <div class="star-x" style="left:59.66%;top:22.22%"></div>
+                <div class="star" style="left:8.43%;top:29.14%"></div>
+                <div class="star" style="left:18.16%;top:42.99%"></div>
+                <div class="star-ball red" style="left:81.71%;top:42.99%"></div>
+                <div class="star yellow" style="left:5.51%;top:46.41%"></div>
+                <div class="star" style="left:73.93%;top:49.54%"></div>
+                <div class="star" style="left:58.37%;top:52.46%"></div>
+                <div class="star" style="left:88.20%;top:54.64%"></div>
+                <div class="star yellow" style="left:46.04%;top:55.74%"></div>
+                <div class="star-cross" style="left:11.02%;top:56.83%"></div>
+                <div class="star" style="left:12.32%;top:65.57%"></div>
+                <div class="star-cross" style="left:51.88%;top:66.30%"></div>
+                <div class="star red" style="left:95.33%;top:65.94%"></div>
+                <div class="star gray" style="left:42.80%;top:72.50%"></div>
+                <div class="star-x" style="left:8.43%;top:76.50%"></div>
+                <div class="star red" style="left:29.83%;top:75.05%"></div>
+                <div class="star-cross" style="left:73.28%;top:78.69%"></div>
+                <div class="star" style="left:90.14%;top:81.24%"></div>
+                <div class="star-cross" style="left:45.40%;top:87.80%"></div>
+            </div>
+        </div>
+        <div class="text-group b-r text1">
+            <p class="text"><b>步履不停</b>的追寻中<br>，</p>
+            <p class="text">怀揣一探究竟的<b>执拗</b></p>
+        </div>
+        <div class="text-group b-l text2">
+            <p class="text"><b>天马行空</b>的想象<br>，</p>
+            <p class="text">发自肺腑的热爱</p>
+        </div>
+        <div class="text-group b-l text3">
+            <p class="text">所有我<b>相信</b>的<br>，<b>坚持</b>的</p>
+            <p class="text">给予了我不可动摇的<b>力量</b></p>
+        </div>
+
+    </div>
+    <div class="page" id="p3">
+        <div class="astronaut">
+            <img src="/asset/img/p3/astronaut.gif" alt="">
+        </div>
+        <div class="aerolite-wrapper"  >
+            <div class="aerolite a1" id="aerolite1" style="margin: -12% 0 0 -6%;"></div>
+            <div class="aerolite a1" id="aerolite2" style="margin: -19% 0 0 -30%;"></div>
+            <div class="aerolite a2" id="aerolite3" style="margin: 21% 0 0 -2%;"></div>
+        </div>
+
+
+
+
+
+        <div class="star red" style="left:9.08%;top:5.83%"></div>
+        <div class="star" style="left:63.62%;top:5.54%"></div>
+        <div class="star-cross" style="left:84.31%;top:8.74%"></div>
+        <div class="star-x" style="left:49.94%;top:10.93%"></div>
+        <div class="star yellow" style="left:29.18%;top:13.11%"></div>
+        <div class="star-cross" style="left:16.02%;top:16.83%"></div>
+        <div class="star-x" style="left:59.66%;top:22.22%"></div>
+        <div class="star" style="left:8.43%;top:29.14%"></div>
+        <div class="star" style="left:18.16%;top:42.99%"></div>
+        <div class="star yellow" style="left:5.51%;top:46.41%"></div>
+        <div class="star" style="left:73.93%;top:49.54%"></div>
+        <div class="star" style="left:58.37%;top:52.46%"></div>
+        <div class="star" style="left:88.20%;top:54.64%"></div>
+        <div class="star yellow" style="left:46.04%;top:55.74%"></div>
+        <div class="star-cross" style="left:11.02%;top:56.83%"></div>
+        <div class="star" style="left:12.32%;top:65.57%"></div>
+        <div class="star-cross" style="left:51.88%;top:66.30%"></div>
+        <div class="star red" style="left:95.33%;top:65.94%"></div>
+        <div class="star gray" style="left:42.80%;top:72.50%"></div>
+        <div class="star-x" style="left:8.43%;top:76.50%"></div>
+        <div class="star red" style="left:29.83%;top:75.05%"></div>
+        <div class="star-cross" style="left:73.28%;top:78.69%"></div>
+        <div class="star" style="left:90.14%;top:81.24%"></div>
+        <div class="star-cross" style="left:45.40%;top:87.80%"></div>
+    </div>
+    <div class="page" id="p4">
+        <div class="text-group b-l ">
+            <p class="text">准备中。。。。</p>
+        </div>
+    </div>
+    <script src="/asset/js/index.js"></script>
 </body>
 
 </html>

@@ -27,19 +27,22 @@
 }
 #p0 .text-wrap {
   position: absolute;
-  width: 3rem;
+  width: 4rem;
   top: 168px;
-  margin-left: -0.5rem;
+  margin-left: -0.6rem;
+  text-align: center;
 }
 #p0 .text1 {
   width: 100%;
   text-align: left;
+  font-size: 0.6rem;
 }
 #p0 .text1.progress {
-  color: #7bc2ff;
+  color: #33ccff;
   width: 0%;
   overflow: hidden;
   white-space: nowrap;
+  transition: width 1s ease;
 }
 @keyframes zoom {
   0% {

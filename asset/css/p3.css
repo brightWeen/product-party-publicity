@@ -1,0 +1,49 @@
+#p3 .astronaut {
+  position: absolute;
+  width: 7.33333333rem;
+  height: 7.33333333rem;
+  top: 34%;
+  left: 20%;
+  z-index: 100;
+  transition: all 3s linear;
+}
+#p3 .astronaut img {
+  width: 100%;
+  height: 100%;
+}
+#p3 .aerolite-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+#p3 .aerolite {
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -10%;
+  left: 110%;
+  animation: aerolite-fall 0s linear infinite;
+}
+#p3 .aerolite.a1 {
+  width: 1.56rem;
+  height: 2.01333333rem;
+  background-image: url('/asset/img/p3/aerolite1.png');
+}
+#p3 .aerolite.a2 {
+  width: 1.64rem;
+  height: 2.08rem;
+  background-image: url('/asset/img/p3/aerolite2.png');
+}
+#p3 .aerolite.a3 {
+  width: 1.69333333rem;
+  height: 2.82666667rem;
+  background-image: url('/asset/img/p3/aerolite3.png');
+}
+@keyframes aerolite-fall {
+  0% {
+    transform: translateY(0rem) translateX(0rem);
+  }
+  100% {
+    transform: translateY(20rem) translateX(-10rem);
+  }
+}
