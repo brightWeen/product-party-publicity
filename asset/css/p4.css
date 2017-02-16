@@ -1,0 +1,98 @@
+#p4 .bg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+}
+#p4 .planet-bottom {
+  background-image: url('/asset/img/p4/planet-bottom.png');
+  left: -0.5rem;
+  bottom: -5.4rem;
+  width: 10.84rem;
+  height: 10.21333333rem;
+}
+#p4 .astronaut {
+  background-image: url('/asset/img/p4/astronaut.png');
+  left: calc(50% - 1.5rem);
+  bottom: 3rem;
+  width: 3.81333333rem;
+  height: 3.92rem;
+  display: none;
+  z-index: 100;
+}
+#p4 .earth {
+  background-image: url('/asset/img/p4/earth.png');
+  right: 12%;
+  top: 10%;
+  width: 1.42666667rem;
+  height: 1.6rem;
+}
+#p4 .ball2 {
+  background-image: url('/asset/img/p2/ball2.png');
+  width: 4.90666667rem;
+  height: 5rem;
+  top: -15%;
+  left: -16%;
+  animation: rotate 8s infinite linear;
+}
+#p4 .ufo {
+  background-image: url('/asset/img/p4/ufo.png');
+  left: 10%;
+  top: 10%;
+  width: 1.36rem;
+  height: 1.38666667rem;
+}
+#p4 .planet1 {
+  background-image: url('/asset/img/p4/planet1.png');
+  right: 10%;
+  top: 10%;
+  width: 0.49333333rem;
+  height: 0.62666667rem;
+}
+#p4 .planet2 {
+  background-image: url('/asset/img/p4/planet2.png');
+  right: 10%;
+  bottom: 30%;
+  width: 1.48rem;
+  height: 1.08rem;
+}
+#p4 .logo {
+  background-image: url('/asset/img/p4/logo.png');
+  top: 20%;
+  left: calc(50% -  4.68rem);
+  width: 9.36rem;
+  height: 5.98666667rem;
+}
+#p4 .text1 p:first-of-type {
+  margin-top: -1rem;
+}
+#p4 .text2 {
+  margin-top: 1.4rem;
+}
+#p4 .text2 p:first-of-type {
+  margin-top: -2.5rem;
+}
+#p4 .text3 p:first-of-type {
+  margin-top: -1rem;
+}
+#p4 .text4 {
+  top: 54%;
+  left: 0;
+  text-align: center;
+  width: 100%;
+}
+#p4 .text4 p {
+  width: auto;
+  float: none;
+  font-size: 0.44rem;
+}
+#p4 .enter-btn2 {
+  top: 70%;
+  display: none;
+}
+#p4 .text5 {
+  top: 78%;
+  left: 50%;
+  width: 4.6rem;
+  margin-left: -2rem;
+  display: none;
+}

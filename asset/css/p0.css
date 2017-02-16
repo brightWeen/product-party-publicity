@@ -1,17 +1,18 @@
 #p0 .loading-bg {
   background: url('/asset/img/p0/loading-bg.png') no-repeat;
-  width: 150px;
-  height: 200px;
+  background-size: cover;
+  width: 1.86666667rem;
+  height: 2.4rem;
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translateX(-75px) translateY(-100px);
-  padding-top: 160px;
+  transform: translateX(-0.93333333rem) translateY(-1.2rem);
 }
 #p0 .loading-item {
   background: url('/asset/img/p0/loading-item.png') no-repeat;
+  background-size: cover;
   width: 100%;
-  height: 150px;
+  height: 2.4rem;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -19,23 +20,25 @@
 }
 #p0 .loading-bottom {
   background: #33ccff;
-  height: 14px;
-  width: 80px;
-  border-radius: 40px / 7px;
-  margin-left: 30px;
+  height: 0.18666667rem;
+  width: 1.06666667rem;
+  border-radius: 0.5rem / 0.093rem;
+  margin-left: 0.4rem;
   animation: zoom 1.5s infinite linear;
+  position: absolute;
+  bottom: -0.2rem;
 }
 #p0 .text-wrap {
   position: absolute;
   width: 4rem;
-  top: 168px;
-  margin-left: -0.6rem;
+  top: 2.24rem;
+  margin-left: -0.4rem;
   text-align: center;
 }
 #p0 .text1 {
   width: 100%;
   text-align: left;
-  font-size: 0.6rem;
+  font-size: 0.5rem;
 }
 #p0 .text1.progress {
   color: #33ccff;
