@@ -30,15 +30,16 @@
 }
 #p0 .text-wrap {
   position: absolute;
-  width: 4rem;
-  top: 2.24rem;
-  margin-left: -0.4rem;
   text-align: center;
+  top: 50%;
+  margin-top: 1.4rem;
+  width: 2.4rem;
+  margin-left: -1.2rem;
+  left: 50%;
 }
 #p0 .text1 {
   width: 100%;
   text-align: left;
-  font-size: 0.5rem;
 }
 #p0 .text1.progress {
   color: #33ccff;

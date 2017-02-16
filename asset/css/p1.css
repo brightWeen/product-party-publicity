@@ -39,6 +39,7 @@
 #p1 .text2 {
   top: 88%;
   left: 50%;
-  margin-left: -1.3rem;
-  width: 3rem;
+  margin-left: -2rem;
+  width: 4rem;
+  text-align: center;
 }

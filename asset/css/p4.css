@@ -57,7 +57,7 @@
 }
 #p4 .logo {
   background-image: url('/asset/img/p4/logo.png');
-  top: 20%;
+  top: 16%;
   left: calc(50% -  4.68rem);
   width: 9.36rem;
   height: 5.98666667rem;
@@ -75,7 +75,7 @@
   margin-top: -1rem;
 }
 #p4 .text4 {
-  top: 54%;
+  top: 52%;
   left: 0;
   text-align: center;
   width: 100%;
@@ -86,13 +86,14 @@
   font-size: 0.44rem;
 }
 #p4 .enter-btn2 {
-  top: 70%;
+  top: 74%;
   display: none;
 }
 #p4 .text5 {
-  top: 78%;
+  top: 82%;
   left: 50%;
-  width: 4.6rem;
+  width: 4rem;
   margin-left: -2rem;
   display: none;
+  text-align: center;
 }

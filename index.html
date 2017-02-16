@@ -22,16 +22,77 @@
 </head>
 
 <body>
+    <audio style="opacity: 0;position: absolute;left: -100rem;" preload="preload" id="music" loop="loop" src="/asset/lib/bgm.mp3">
+    </audio>
+    <script>
+        var audio = document.getElementById("music");
+        audio.preload = 'auto';
+        audio.play();
+
+        //    autoPlayMusic(audio);
+        backgroundMusic(audio);
+        // 音乐播放
+        function autoPlayMusic(audio, other) {
+            var o = 0;
+            if (other) {
+                for (o = 0; o < other.length; o++) {
+                    other[o].pause();
+                }
+            }
+            if (window.WeixinJSBridge) {
+                WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+                    if (audio.paused) {
+                        audio.play();
+                    }
+                });
+            } else {
+                audio.play();
+            }
+        }
+        ///////////////////////
+
+        function backgroundMusic(audio) {
+            // 自动播放音乐效果，解决浏览器或者APP自动播放问题
+            if (audio.paused) {
+                audio.load();
+                audio.play();
+            }
+            function musicInBrowserHandler() {
+                if (audio.paused) {
+                    audio.load();
+                    audio.play();
+                }
+                document.body.removeEventListener('touchstart', musicInBrowserHandler);
+            }
+            document.body.addEventListener('touchstart', musicInBrowserHandler);
+
+            // 自动播放音乐效果，解决微信自动播放问题
+            function musicInWeixinHandler() {
+                if (audio.paused) {
+                    audio.load();
+                    audio.play();
+                }
+                document.addEventListener("WeixinJSBridgeReady", function () {
+                    if (audio.paused) {
+                        audio.load();
+                        audio.play();
+                    }
+                }, false);
+                document.removeEventListener('DOMContentLoaded', musicInWeixinHandler);
+            }
+            document.addEventListener('DOMContentLoaded', musicInWeixinHandler);
+        }
+    </script>
+
     <div class="page" id="p0" style="display: block">
         <div class="loading-bg">
             <div class="loading-item">
             </div>
             <div class="loading-bottom"></div>
-            <div class="text-wrap">
-                <p class="text text1">探索准备中...</p>
-                <p id="loadingProgress" class="text text1 progress">探索准备中...</p>
-            </div>
-
+        </div>
+        <div class="text-wrap">
+            <p class="text text1">探索准备中...</p>
+            <p id="loadingProgress" class="text text1 progress">探索准备中...</p>
         </div>
     </div>
     <div class="page page1" id="p1" style="display: none">
@@ -39,7 +100,7 @@
         <div class="star star1"></div>
         <div class="star star2 gray"></div>
         <div class="text-group b-r text1">
-            <p class="text "><b>在</b>浩瀚宇宙的角落<br>，</p>
+            <p class="text "><b>在</b>浩瀚宇宙的角落</p>
             <p class="text ">我从未停止过对星空的眺望</p>
         </div>
         <div class="enter-btn2 breath  show" id="p1-btn">
@@ -107,36 +168,36 @@
             </div>
         </div>
         <div class="text-group b-r text1">
-            <p class="text"><b>步履不停</b>的追寻中<br>，</p>
+            <p class="text"><b>步履不停</b>的追寻中<br></p>
             <p class="text">怀揣一探究竟的<b>执拗</b></p>
         </div>
         <div class="text-group b-l text2">
-            <p class="text"><b>天马行空</b>的想象<br>，</p>
+            <p class="text"><b>天马行空</b>的想象<br></p>
             <p class="text">发自肺腑的热爱</p>
         </div>
         <div class="text-group b-l text3">
-            <p class="text">所有我<b>相信</b>的<br>，<b>坚持</b>的</p>
+            <p class="text">所有我<b>相信</b>的<br><b>坚持</b>的</p>
             <p class="text">给予了我不可动摇的<b>力量</b></p>
         </div>
 
     </div>
     <div class="page" id="p3">
         <div class="astronaut">
-         </div>
+        </div>
         <div class="aerolite-wrapper">
             <div class="aerolite a1" id="aerolite1" style="margin: -12% 0 0 -6%;"></div>
             <div class="aerolite a1" id="aerolite2" style="margin: -19% 0 0 -30%;"></div>
             <div class="aerolite a2" id="aerolite3" style="margin: 21% 0 0 -2%;"></div>
         </div>
         <div class="text-group b-l text1">
-            <p class="text">尽管有时<br>，狂风骤雨<b>披荆斩棘</b></p>
+            <p class="text">尽管有时<br>狂风骤雨<b>披荆斩棘</b></p>
         </div>
         <div class="text-group b-l text2">
-            <p class="text">有时<br>，<b>孤独迷茫</b></p>
+            <p class="text">有时<br><b>孤独迷茫</b></p>
         </div>
         <div class="text-group t-r text3">
-            <p class="text">但我知道<br>，要触达心中<b>更远</b>的地方</p>
-            <p class="text">有些事<br>，需要<b>一心做好</b></p>
+            <p class="text">但我知道<br>要触达心中<b>更远</b>的地方</p>
+            <p class="text">有些事<br>需要<b>一心做好</b></p>
         </div>
         <div class="star-container">
 
@@ -259,7 +320,7 @@
         <div class="enter-btn2 breath  show" id="p4-btn">
             <div></div>
         </div>
-        <p class="text text5" id="p4-btn-text">点击了解会议议程</p>
+        <p class="text text5" id="p4-btn-text">点击查看大会议程</p>
     </div>
 
     <div class="star-toolbar" style="display: none;    position: absolute;
@@ -275,6 +336,14 @@
         </select>
         <button id="btnStar">add</button>
         </div>
+
+
+
+
+
+        <img src="/asset/img/p4/share-logo.png" alt=" " style="opacity: 0;position:absolute;left: -1000rem;">
+
+
         <script src="/asset/lib/jquery.min.js"></script>
         <script src="/asset/js/index.js?_=20170215"></script>
 </body>

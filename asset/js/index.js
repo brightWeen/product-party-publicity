@@ -24,7 +24,8 @@ var imageLoader = function (urls) {
         var img = new Image();
         $(img).on("load", function () {
             index += 1;
-            $loadingProgress.width(`${index / count * 100}%`);
+            var i = index > 1 ? index - 1 : 0;
+            $loadingProgress.width(`${i / count * 100}%`);
             if (index === count) {
                 dfd.resolve();
             }
@@ -61,6 +62,17 @@ var p0_animate = function () {
         "/asset/img/p4/planet-bottom.png",
         "/asset/img/p4/earth.png"
     ]).then(function () {
+
+        //星星随机闪烁-1
+        $(".star").each(function () {
+            $(this).css("animation-name", `star-${Math.random(2).toFixed(0)}`);
+        });
+        //星星随机闪烁-2
+        $(".star-cross").each(function () {
+            $(this).css("animation-name", `zoom-${Math.random(2).toFixed(0)}`);
+        });
+
+
         //延迟3s
         return delay(1000)
             .then(function () {
@@ -76,9 +88,9 @@ var p1_animate = function () {
     $btn.hide();
     $p1.addClass("ready");
     $p1.fadeIn().promise()
-        .then(function(){ return delay(1000)})
-        .then(function(){ $text1.addClass("show"); return delay(1000); })
-        .then(function(){$btn.fadeIn()});
+        .then(function () { return delay(1000) })
+        .then(function () { $text1.addClass("show"); return delay(1000); })
+        .then(function () { $btn.fadeIn() });
 
     $btn.one("click", function () {
         $text1.addClass("hide")
@@ -95,14 +107,7 @@ var p1_animate = function () {
 var p2_animate = function () {
     //入场时间 10s
     $p2.fadeIn();
-    //星星随机闪烁-1
-    $(".bg-animation .star").each(function () {
-        $(this).css("animation-name", `star-${Math.random(2).toFixed(0)}`);
-    });
-    //星星随机闪烁-2
-    $(".bg-animation .star-cross").each(function () {
-        $(this).css("animation-name", `zoom-${Math.random(2).toFixed(0)}`);
-    });
+
     //宇航员进场
     $("#p2 .astronaut")
         .css("transition-duration", "3s")
@@ -182,9 +187,11 @@ var p3_animate = function () {
 
         var animation = function () {
             delay(delayTime + hideTime)
-                .then(function(){ return $aerolite.fadeOut().promise();})
-                .then(function(){ return delay(durationTime - delayTime - hideTime);})
-                .then(function(){ $aerolite.show();});
+                .then(function () {
+                    $aerolite.fadeOut(250).promise();
+                    return delay(durationTime - delayTime - hideTime);
+                })
+                .then(function () { $aerolite.show(); });
         }
         setInterval(function () {
             animation();
@@ -274,17 +281,17 @@ var p4_animate = function () {
         $clone.css("z-index", astronautZIndex);
         $clone.hide();
         $p4.find(".bg1").append($clone);
-        return function(){
-            return  delay(500)
-        .then(function(){ return $clone.fadeIn(300).promise();})
+        return function () {
+            return delay(500)
+                .then(function () { return $clone.fadeIn(300).promise(); })
         }
     }
     //挨个添加宇航员
     delay(0)
-        .then(function(){return $astronaut.fadeIn().promise();})
+        .then(function () { return $astronaut.fadeIn().promise(); })
         .then(createAstronaut({ left: '-1.4', top: '0.3', zoom: 0.9 }))//left 1
         .then(createAstronaut({ left: '1.4', top: '0.8', zoom: 0.9 }))//right 1
-        .then( createAstronaut({ left: '-2.5', top: '1', zoom: 0.9 }))//left 2
+        .then(createAstronaut({ left: '-2.5', top: '1', zoom: 0.9 }))//left 2
         .then(createAstronaut({ left: '3', top: '1.2', zoom: 0.9 }))//left 2
         .then(createAstronaut({ left: '0.3', top: '1', zoom: 0.9 }))//center 2
 
@@ -309,13 +316,9 @@ var p4_animate = function () {
             return delay(200);
         })
         .then(function () {
-            //文字二 14s
-            return delay(200);
-        })
-        .then(function () {
             $p4.find(".text2")
                 .addClass("show");
-            return delay(1000 * 2);
+            return delay(1000 * 2.5);
         })
         .then(function () {
             $p4.find(".text2")
@@ -330,7 +333,7 @@ var p4_animate = function () {
         .then(function () {
             $p4.find(".text3")
                 .addClass("show");
-            return delay(1000 * 2);
+            return delay(1000 * 2.5);
         })
         .then(function () {
             $p4.find(".text3")
@@ -346,14 +349,14 @@ var p4_animate = function () {
             //logo 下文字
             $p4.find(".text4")
                 .addClass("show");
-            return delay(1000 * 3);
+            return delay(1000 * 1.5);
         })
         .then(function () {
             $("#p4-btn,#p4-btn-text").fadeIn();
         })
 
 }
- 
+
 var star_toolbar = function ($p) {
     var $toolbar = $(".star-toolbar"),
         $container = $p.find(".star-container:first"),
@@ -377,6 +380,7 @@ var star_toolbar = function ($p) {
     });
 
 }
+//p4_animate();
 //p4_animate();
  
 p0_animate()

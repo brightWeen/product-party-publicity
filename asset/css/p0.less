@@ -2,13 +2,12 @@
     .loading-bg {
         background: url('/asset/img/p0/loading-bg.png') no-repeat;
         background-size: cover;
-         width: unit(140/75, rem);
+        width: unit(140/75, rem);
         height: unit(180/75, rem);
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translateX(unit(-140/75/2, rem)) translateY(unit(-180/75/2, rem));
-        
     }
     .loading-item {
         background: url('/asset/img/p0/loading-item.png') no-repeat;
@@ -22,26 +21,27 @@
     }
     .loading-bottom {
         background: #33ccff;
-        height:unit(14/75, rem);
+        height: unit(14/75, rem);
         width: unit(80/75, rem);
         border-radius: ~"0.5rem / 0.093rem";
-        margin-left: unit(30/75, rem);;
+        margin-left: unit(30/75, rem);
+        ;
         animation: zoom 1.5s infinite linear;
         position: absolute;
         bottom: -0.2rem;
     }
     .text-wrap {
         position: absolute;
-        width: 4rem;
-        top: unit(168/75, rem);
-        margin-left: -0.4rem;
         text-align: center;
-        
+        top: 50%;
+        margin-top: 1.4rem;
+        width: 2.4rem;
+        margin-left: -1.2rem;
+        left: 50%;
     }
     .text1 {
         width: 100%;
         text-align: left;
-        font-size: 0.5rem;
         &.progress {
             color: #33ccff;
             width: 0%;

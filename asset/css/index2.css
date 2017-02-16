@@ -24,12 +24,13 @@ body {
 }
 .page .text-group {
   position: absolute;
-  transition: transform, opacity 0.5s ease-out;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   opacity: 0;
+  z-index: 500;
 }
 .page .text-group .text {
   position: relative;
-  width: 0.8rem;
+  width: 0.7rem;
 }
 .page .text-group.b-l {
   left: 10%;
@@ -70,10 +71,10 @@ body {
   color: #fff;
   position: absolute;
   text-align: center;
-  font-size: 0.5rem;
+  font-size: 0.4rem;
 }
 .page .text b {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: inherit;
 }
 .page .text.bottom {
@@ -142,7 +143,7 @@ body {
   position: absolute;
   top: 81%;
   left: 50%;
-  margin-left: -0.6rem;
+  margin-left: -0.8rem;
   z-index: 6;
   transition: all ease 1s;
   animation-iteration-count: infinite;
@@ -212,14 +213,8 @@ body {
   0% {
     transform: scale(0.5);
   }
-  25% {
-    transform: scale(0.2);
-  }
   50% {
-    transform: scale(0.5);
-  }
-  75% {
-    transform: scale(0.8);
+    transform: scale(0.2);
   }
   100% {
     transform: scale(0.5);
@@ -227,19 +222,13 @@ body {
 }
 @keyframes zoom-1 {
   0% {
-    transform: scale(1);
-  }
-  25% {
-    transform: scale(0.8);
+    transform: scale(0.6);
   }
   50% {
-    transform: scale(0.5);
-  }
-  75% {
-    transform: scale(0.8);
+    transform: scale(1);
   }
   100% {
-    transform: scale(0.1);
+    transform: scale(0.6);
   }
 }
 @keyframes rotate {
