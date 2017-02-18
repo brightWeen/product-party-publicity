@@ -1,18 +1,14 @@
-var koa = require('koa');
-var serve = require('koa-static');
+var express = require('express');
+var compression = require('compression')
 
-/*
-var AV = require('leanengine');
+var app = express();
 
-AV.init({
-  appId: process.env.LEANCLOUD_APP_ID || 'CF0XJDfGyvEX5XzlO8yCFVVE-gzGzoHsz',
-  appKey: process.env.LEANCLOUD_APP_KEY || 'PuiEvdELfIV7TQJS0cXHHteT',
-  masterKey: process.env.LEANCLOUD_APP_MASTER_KEY || 'q2fwobEVSxJMD5khLJq9wsxH'
-});
- */
-var app = koa();
-//app.use(require('koa-static')(root, opts));
-app.use(serve('asset'));
-app.use(serve('.'));
-//app.use(AV.koa());
-app.listen(process.env.LEANCLOUD_APP_PORT||8080);
+ 
+app.use(compression( ))
+
+ 
+app.use('/asset', express.static('asset'));
+app.use('/', express.static('./'));
+
+
+app.listen(process.env.LEANCLOUD_APP_PORT || 8080);

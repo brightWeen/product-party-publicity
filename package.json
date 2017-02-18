@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "koa": "^1.2.5",
-    "koa-static": "^2.1.0"
+    "compression": "^1.6.2",
+    "express": "^4.14.1"
   }
 }
