@@ -2,9 +2,11 @@ var $p0 = $("#p0"),
     $p1 = $("#p1"),
     $p2 = $("#p2"),
     $p3 = $("#p3"),
-    $p4 = $("#p4");
+    $p4 = $("#p4"),
+    $p5 = $("#p5");
 
-
+var pageFadeOutTime = 1000,
+    pageFadeInTime = 2500;
 function delay(time) {
     var dfd = $.Deferred();
     setTimeout(function () {
@@ -14,15 +16,21 @@ function delay(time) {
 }
 
 //图片加载进度
-var imageLoader = function (urls) {
+var imageLoader = function () {
     var dfd = $.Deferred();
-    var deffreds = [],
-        count = urls.length,
+    var $imageTmpl = $("#imageTmpl"),
+        $imageCache = $("#imageCache");
+    $imageCache.html($imageTmpl.html());
+
+    var $images = $imageCache.find("img");
+
+    var count = $images.length,
         index = 0,
         $loadingProgress = $("#loadingProgress");
-    urls.forEach(function (url) {
-        var img = new Image();
-        $(img).on("load", function () {
+
+    $images.each(function () {
+        var $img = $(this);
+        $img.on("load", function () {
             index += 1;
             var i = index > 1 ? index - 1 : 0;
             $loadingProgress.width(`${i / count * 100}%`);
@@ -30,55 +38,34 @@ var imageLoader = function (urls) {
                 dfd.resolve();
             }
         });
-        img.src = url;
     });
     return dfd;
 
 }
+
+
 //场景0（加载等待）
 var p0_animate = function () {
     //$p0.fadeIn(0);
-    return imageLoader([
-        "/asset/img/p1/bg.png",
-        "/asset/img/p1/light.png",
-        "/asset/img/p2/astronaut.gif",
-        "/asset/img/p2/ball2.png",
-        "/asset/img/p2/ball3.png",
-        "/asset/img/p2/ball4.png",
-        "/asset/img/p2/star.png",
-        "/asset/img/p2/star-x.png",
-        "/asset/img/p2/ball1.png",
-        "/asset/img/p2/star-blue.png",
-        "/asset/img/p2/star-red.png",
-        "/asset/img/p3/astronaut.gif",
-        "/asset/img/p3/aerolite1.png",
-        "/asset/img/p3/aerolite2.png",
-        "/asset/img/p3/aerolite3.png",
-        "/asset/img/p4/ufo.png",
-        "/asset/img/p4/logo.png",
-        "/asset/img/p4/planet1.png",
-        "/asset/img/p4/planet2.png",
-        "/asset/img/p4/astronaut.png",
-        "/asset/img/p4/planet-bottom.png",
-        "/asset/img/p4/earth.png"
-    ]).then(function () {
+    return imageLoader()
+        .then(function () {
 
-        //星星随机闪烁-1
-        $(".star").each(function () {
-            $(this).css("animation-name", `star-${Math.random(2).toFixed(0)}`);
-        });
-        //星星随机闪烁-2
-        $(".star-cross").each(function () {
-            $(this).css("animation-name", `zoom-${Math.random(2).toFixed(0)}`);
-        });
-
-
-        //延迟3s
-        return delay(1000)
-            .then(function () {
-                return $p0.fadeOut().promise();
+            //星星随机闪烁-1
+            $(".star").each(function () {
+                $(this).css("animation-name", `star-${Math.random(2).toFixed(0)}`);
             });
-    });;
+            //星星随机闪烁-2
+            $(".star-cross").each(function () {
+                $(this).css("animation-name", `zoom-${Math.random(2).toFixed(0)}`);
+            });
+
+
+            //延迟3s
+            return delay(1000)
+                .then(function () {
+                    return $p0.fadeOut(pageFadeOutTime).promise();
+                });
+        });;
 }
 //场景1
 var p1_animate = function () {
@@ -87,7 +74,7 @@ var p1_animate = function () {
         dfd = $.Deferred();
     $btn.hide();
     $p1.addClass("ready");
-    $p1.fadeIn().promise()
+    $p1.fadeIn(pageFadeInTime).promise()
         .then(function () { return delay(1000) })
         .then(function () { $text1.addClass("show"); return delay(1000); })
         .then(function () { $btn.fadeIn() });
@@ -96,8 +83,11 @@ var p1_animate = function () {
         $text1.addClass("hide")
             .removeClass("show");
         delay(100)
-            .then($p1.fadeOut().promise())
-            .then(dfd.resolve);
+            .then(function () {
+                $p1.fadeOut(pageFadeOutTime, function () {
+                    dfd.resolve();
+                });
+            });
     });
 
     return dfd;
@@ -106,7 +96,7 @@ var p1_animate = function () {
 //场景2
 var p2_animate = function () {
     //入场时间 10s
-    $p2.fadeIn();
+    $p2.fadeIn(pageFadeInTime);
 
     //宇航员进场
     $("#p2 .astronaut")
@@ -164,13 +154,13 @@ var p2_animate = function () {
             return delay(200);
         })
         .then(function () {
-            return $p2.fadeOut().promise();
+            return $p2.fadeOut(pageFadeOutTime).promise();
         });
 
 }
 //场景3
 var p3_animate = function () {
-    $p3.fadeIn();
+    $p3.fadeIn(pageFadeInTime);
     var $aerolite1 = $p3.find("#aerolite1"),
         $aerolite2 = $p3.find("#aerolite2"),
         $aerolite3 = $p3.find("#aerolite3"),
@@ -260,16 +250,20 @@ var p3_animate = function () {
             return delay(200);
         })
         .then(function () {
-            return $p3.fadeOut().promise();
+            return $p3.fadeOut(pageFadeOutTime).promise();
         });
 
 }
 
 var p4_animate = function () {
-    $p4.fadeIn();
+    $p4.fadeIn(pageFadeInTime);
+    var dfd = $.Deferred();
     //star_toolbar($p4);
     $("#p4-btn,#p4-btn-text").click(function () {
-        alert("还在准备中...");
+        //window.location.href = "/metting.html";
+        $p4.fadeOut(pageFadeOutTime, function () {
+            dfd.resolve();
+        })
     });
     //添加宇航员
     var $astronaut = $p4.find(".astronaut");
@@ -289,6 +283,7 @@ var p4_animate = function () {
     //挨个添加宇航员
     delay(0)
         .then(function () { return $astronaut.fadeIn().promise(); })
+        .then(function () { return delay(2000); })
         .then(createAstronaut({ left: '-1.4', top: '0.3', zoom: 0.9 }))//left 1
         .then(createAstronaut({ left: '1.4', top: '0.8', zoom: 0.9 }))//right 1
         .then(createAstronaut({ left: '-2.5', top: '1', zoom: 0.9 }))//left 2
@@ -298,8 +293,8 @@ var p4_animate = function () {
 
     //三秒后背景开始滚动
     $p4.find('.bg-animation')
-        .css("transition-delay", "3s")
-        .css("transition-duration", `${12}s`)
+        .css("transition-delay", "4s")
+        .css("transition-duration", `${15}s`)
         .addClass("next");
 
 
@@ -307,7 +302,7 @@ var p4_animate = function () {
         .then(function () {
             $p4.find(".text1")
                 .addClass("show");
-            return delay(1000 * 3);
+            return delay(1000 * 4);
         })
         .then(function () {
             $p4.find(".text1")
@@ -318,7 +313,7 @@ var p4_animate = function () {
         .then(function () {
             $p4.find(".text2")
                 .addClass("show");
-            return delay(1000 * 2.5);
+            return delay(1000 * 4);
         })
         .then(function () {
             $p4.find(".text2")
@@ -333,7 +328,7 @@ var p4_animate = function () {
         .then(function () {
             $p4.find(".text3")
                 .addClass("show");
-            return delay(1000 * 2.5);
+            return delay(1000 * 4);
         })
         .then(function () {
             $p4.find(".text3")
@@ -353,10 +348,15 @@ var p4_animate = function () {
         })
         .then(function () {
             $("#p4-btn,#p4-btn-text").fadeIn();
-        })
-
+        });
+    return dfd;
 }
 
+var p5_animate = function () {
+    $p5.fadeIn(pageFadeInTime);
+    $p5.find(".bg")
+        .attr("src", "/asset/img/metting/bg-metting.png");
+}
 var star_toolbar = function ($p) {
     var $toolbar = $(".star-toolbar"),
         $container = $p.find(".star-container:first"),
@@ -381,11 +381,12 @@ var star_toolbar = function ($p) {
 
 }
 //p4_animate();
-//p4_animate();
- 
+//p5_animate();
+
 p0_animate()
     .then(p1_animate)
     .then(p2_animate)
     .then(p3_animate)
-    .then(p4_animate);
+    .then(p4_animate)
+    .then(p5_animate);
 /* */

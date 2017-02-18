@@ -12,8 +12,23 @@
 </head>
 
 <body>
-    <img class="bg" src="/asset/img/metting/bg-metting.png">
+    <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
 
+    <img class="bg">
+    <script src="/asset/lib/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $(".bg")
+                .attr("src", "/asset/img/metting/bg-metting.png")
+                .on("load", function (e) {
+                    $(this).fadeIn(500);
+                    $(".spinner").hide();
+                });
+        })
+    </script>
 </body>
 
 </html>

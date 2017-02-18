@@ -37,7 +37,7 @@
 #p4 .ufo {
   background-image: url('/asset/img/p4/ufo.png');
   left: 10%;
-  top: 10%;
+  top: 6%;
   width: 1.36rem;
   height: 1.38666667rem;
 }
@@ -57,7 +57,7 @@
 }
 #p4 .logo {
   background-image: url('/asset/img/p4/logo.png');
-  top: 16%;
+  top: 14%;
   left: calc(50% -  4.68rem);
   width: 9.36rem;
   height: 5.98666667rem;
@@ -90,10 +90,17 @@
   display: none;
 }
 #p4 .text5 {
-  top: 82%;
+  top: 83%;
   left: 50%;
   width: 4rem;
   margin-left: -2rem;
   display: none;
   text-align: center;
+}
+#p5 {
+  overflow-y: auto;
+}
+#p5 .bg {
+  width: 100%;
+  margin: 0 auto;
 }

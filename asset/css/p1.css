@@ -33,11 +33,15 @@
   top: 5%;
   left: 39%;
 }
+#p1 .text1 {
+  bottom: 6%;
+  right: 6%;
+}
 #p1 .text1 p:first-of-type {
   margin-top: -0.5rem;
 }
 #p1 .text2 {
-  top: 88%;
+  top: 90%;
   left: 50%;
   margin-left: -2rem;
   width: 4rem;
