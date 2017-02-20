@@ -276,14 +276,14 @@ var p4_animate = function () {
         $clone.hide();
         $p4.find(".bg1").append($clone);
         return function () {
-            return delay(500)
+            return delay(300)
                 .then(function () { return $clone.fadeIn(300).promise(); })
         }
     }
     //挨个添加宇航员
     delay(0)
         .then(function () { return $astronaut.fadeIn().promise(); })
-        .then(function () { return delay(2000); })
+        .then(function () { return delay(1000); })
         .then(createAstronaut({ left: '-1.4', top: '0.3', zoom: 0.9 }))//left 1
         .then(createAstronaut({ left: '1.4', top: '0.8', zoom: 0.9 }))//right 1
         .then(createAstronaut({ left: '-2.5', top: '1', zoom: 0.9 }))//left 2
@@ -293,12 +293,12 @@ var p4_animate = function () {
 
     //三秒后背景开始滚动
     $p4.find('.bg-animation')
-        .css("transition-delay", "4s")
+        .css("transition-delay", "7s")
         .css("transition-duration", `${15}s`)
         .addClass("next");
 
 
-    delay(1000)
+    delay(3000)
         .then(function () {
             $p4.find(".text1")
                 .addClass("show");
@@ -356,6 +356,36 @@ var p5_animate = function () {
     $p5.fadeIn(pageFadeInTime);
     $p5.find(".bg")
         .attr("src", "/asset/img/metting/bg-metting.png");
+
+    var myScroll = new IScroll($p5[0], {
+        mouseWheel: true,
+
+        probeType: 2
+        //scrollbars: true
+    });
+    var t = null;
+    var scrollEnd = function () {
+        if ((this.y - 20) < this.maxScrollY) {
+            if (t) { clearTimeout(t) }
+            t = setTimeout(function () {
+                $p5.find(".share-guide").fadeIn(500, function () {
+                    myScroll.destroy();
+                });
+            }, 1000);
+        }
+    }
+
+    myScroll.on('scroll', scrollEnd);
+    myScroll.on('scrollEnd', scrollEnd);
+    $p5.find(".share-guide").on("click", function () {
+        $(this).fadeOut(1000, function () {
+            myScroll = new IScroll($p5[0], {
+                mouseWheel: true,
+                probeType: 2
+                //scrollbars: true
+            });
+        });
+    });
 }
 var star_toolbar = function ($p) {
     var $toolbar = $(".star-toolbar"),
@@ -381,7 +411,8 @@ var star_toolbar = function ($p) {
 
 }
 //p4_animate();
-//p5_animate();
+//p4_animate();
+
 
 p0_animate()
     .then(p1_animate)
