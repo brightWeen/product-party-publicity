@@ -415,9 +415,9 @@ var star_toolbar = function ($p) {
 
 }
 //p4_animate();
-p5_animate();
+ //p5_animate();
 
- /*
+
 p0_animate()
     .then(p1_animate)
     .then(p2_animate)
