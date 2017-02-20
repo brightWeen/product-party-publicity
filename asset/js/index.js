@@ -107,7 +107,7 @@ var p2_animate = function () {
     //三秒后背景开始滚动
     $("#p2 .bg-animation")
         .css("transition-delay", "3s")
-        .css("transition-duration", `${10}s`)
+        .css("transition-duration", `${12}s`)
         .addClass("next");
 
     //文字1
@@ -115,7 +115,7 @@ var p2_animate = function () {
         .then(function () {
             $p2.find(".text1")
                 .addClass("show");
-            return delay(1000 * 4);
+            return delay(1000 * 5);
         })
         .then(function () {
             $p2.find(".text1")
@@ -215,11 +215,11 @@ var p3_animate = function () {
     $aeroliteWrap.append(shadowAerolites);
 
     //文字
-    return delay(100)
+    return delay(1500)
         .then(function () {
             $p3.find(".text1")
                 .addClass("show");
-            return delay(1000 * 3);
+            return delay(1000 * 4);
         })
         .then(function () {
             $p3.find(".text1")
@@ -230,7 +230,7 @@ var p3_animate = function () {
         .then(function () {
             $p3.find(".text2")
                 .addClass("show");
-            return delay(1000 * 3);
+            return delay(1000 * 4);
         })
         .then(function () {
             $p3.find(".text2")
@@ -241,7 +241,7 @@ var p3_animate = function () {
         .then(function () {
             $p3.find(".text3")
                 .addClass("show");
-            return delay(1000 * 3);
+            return delay(1000 * 6);
         })
         .then(function () {
             $p3.find(".text3")
@@ -293,16 +293,16 @@ var p4_animate = function () {
 
     //三秒后背景开始滚动
     $p4.find('.bg-animation')
-        .css("transition-delay", "7s")
-        .css("transition-duration", `${15}s`)
+        .css("transition-delay", "9s")
+        .css("transition-duration", `${18}s`)
         .addClass("next");
 
 
-    delay(3000)
+    delay(5000)
         .then(function () {
             $p4.find(".text1")
                 .addClass("show");
-            return delay(1000 * 4);
+            return delay(1000 * 6);
         })
         .then(function () {
             $p4.find(".text1")
@@ -313,7 +313,7 @@ var p4_animate = function () {
         .then(function () {
             $p4.find(".text2")
                 .addClass("show");
-            return delay(1000 * 4);
+            return delay(1000 * 5);
         })
         .then(function () {
             $p4.find(".text2")
@@ -328,7 +328,7 @@ var p4_animate = function () {
         .then(function () {
             $p4.find(".text3")
                 .addClass("show");
-            return delay(1000 * 4);
+            return delay(1000 * 5);
         })
         .then(function () {
             $p4.find(".text3")
@@ -364,15 +364,23 @@ var p5_animate = function () {
         //scrollbars: true
     });
     var t = null;
+    var $share = $p5.find(".share-guide");
     var scrollEnd = function () {
         if ((this.y - 20) < this.maxScrollY) {
             if (t) { clearTimeout(t) }
             t = setTimeout(function () {
                 $p5.find(".share-guide")
-                .fadeIn(500, function () {
-                    myScroll.destroy();
-                });
+                    .fadeIn(500, function () {
+
+                    });
             }, 500);
+        } else if ((this.y - 200) > this.maxScrollY
+            && !$share.is(":hidden")
+        ) {
+            if (t) { clearTimeout(t) }
+            t = setTimeout(function () {
+                $share.fadeOut();
+            }, 20);
         }
     }
 
@@ -380,11 +388,6 @@ var p5_animate = function () {
     myScroll.on('scrollEnd', scrollEnd);
     $p5.find(".share-guide").on("click", function () {
         $(this).fadeOut(1000, function () {
-            myScroll = new IScroll($p5[0], {
-                mouseWheel: true,
-                probeType: 2
-                //scrollbars: true
-            });
         });
     });
 }
@@ -412,9 +415,9 @@ var star_toolbar = function ($p) {
 
 }
 //p4_animate();
-//p5_animate();
+p5_animate();
 
- 
+ /*
 p0_animate()
     .then(p1_animate)
     .then(p2_animate)
