@@ -368,10 +368,11 @@ var p5_animate = function () {
         if ((this.y - 20) < this.maxScrollY) {
             if (t) { clearTimeout(t) }
             t = setTimeout(function () {
-                $p5.find(".share-guide").fadeIn(500, function () {
+                $p5.find(".share-guide")
+                .fadeIn(500, function () {
                     myScroll.destroy();
                 });
-            }, 1000);
+            }, 500);
         }
     }
 
@@ -411,9 +412,9 @@ var star_toolbar = function ($p) {
 
 }
 //p4_animate();
-//p4_animate();
+//p5_animate();
 
-
+ 
 p0_animate()
     .then(p1_animate)
     .then(p2_animate)
